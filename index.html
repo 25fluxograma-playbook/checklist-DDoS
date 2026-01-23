@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checklist Completo - Resposta a Incidentes DDoS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #e2e4e3; color: #060b41; line-height: 1.6; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+        .container { max-width: 900px; background: #fff; padding: 40px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; }
+        h1 { background-color: #6e6e6e; color: #fff; border-radius: 3px; padding: 15px; font-size: 1.6rem; margin-top: 0; text-align: center; text-transform: uppercase; }
+        .intro { background: #f9f9f9; padding: 15px; border-left: 5px solid #012470; margin-bottom: 30px; font-size: 15px; }
+        h2 { background-color: #6e6e6e; color: white; padding: 10px 15px; border-radius: 4px; margin-top: 35px; font-size: 17px; text-transform: uppercase; }
+        h3 { color: #666; border-bottom: 1px solid #ddd; margin-top: 20px; font-size: 15px; }
+        .question-block { margin-bottom: 15px; padding: 10px 0; border-bottom: 1px solid #f0f0f0; }
+        .question-text { font-weight: 700; display: block; margin-bottom: 8px; font-size: 14px; }
+        .options-container { display: flex; gap: 20px; padding-left: 10px; }
+        .option { display: flex; align-items: center; cursor: pointer; font-size: 13px; font-weight: 400; }
+        .option input { margin-right: 8px; width: 16px; height: 16px; }
+        .actions { margin-top: 40px; display: flex; gap: 15px; justify-content: center; }
+        .btn { padding: 12px 25px; font-weight: 700; text-transform: uppercase; border: none; border-radius: 4px; cursor: pointer; }
+        .btn-print { background-color: #666; color: white; }
+        .btn-clear { background-color: #7f8c8d; color: white; }
+        footer { margin-top: 40px; font-size: 12px; color: #7f8c8d; text-align: center; }
+        @media print { .actions, .btn-clear { display: none; } body { background: white; } .container { box-shadow: none; border: 1px solid #eee; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Checklist - Plano de Resposta DDoS</h1>
+    
+    <div class="intro">
+        Siga  as etapas baseadas no fluxograma de decisão da seção 5 do Playbook . Este guia integra as ações técnicas de mitigação para cada fase do incidente.
+    </div>
+
+    <form id="checklistForm">
+        
+        <h2>FASE 1: DETECÇÃO E ALERTA</h2>
+        <div class="question-block">
+            <span class="question-text">1. Monitoramento ativo identificou anomalias de tráfego?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+        <div class="question-block">
+            <span class="question-text">2. Houve detecção de picos de Gbps ou PPS acima do normal?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+        <div class="question-block">
+            <span class="question-text">3. Análise de padrões: O ataque foi classificado? (Volumétrico, L7, Protocolo)</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+        <div class="question-block">
+            <span class="question-text">4. Ativação do protocolo de resposta foi confirmada?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+
+        <h2>FASE 2: CONTENÇÃO IMEDIATA</h2>
+        <h3>Medidas de Borda e Gestão</h3>
+        <div class="question-block">
+            <span class="question-text">1. Limitação de Taxa (Rate Limiting) foi aplicada em ICMP/UDP?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+        <div class="question-block">
+            <span class="question-text">2. Filtragem Geográfica (Geo-Blocking) ativada para regiões não atendidas?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+        <div class="question-block">
+            <span class="question-text">3. WAF ativado com desafios CAPTCHA ou regras de inspeção profunda?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+        <div class="question-block">
+            <span class="question-text">4. Tráfego redirecionado para Scrubbing Center (se volumétrico)?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+        <div class="question-block">
+            <span class="question-text">5. Isolamento de segmentos/VLANs realizado para proteger a LAN?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+
+        <h2>FASE 3: IDENTIFICAÇÃO E ERRADICAÇÃO</h2>
+        <h3>Ações de Protocolo e Estado</h3>
+        <div class="question-block">
+            <span class="question-text">1. Vetor identificado: Houve mitigação de SYN Flood com SYN Cookies?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+        <div class="question-block">
+            <span class="question-text">2. Bloqueio de IPs/ASNs maliciosos nos roteadores de borda/Upstream?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+        <div class="question-block">
+            <span class="question-text">3. Filtros BCP38 implementados para descartar pacotes spoofed?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+        <div class="question-block">
+            <span class="question-text">4. TCP Keep-Alive e Timeouts ajustados para combater conexões lentas?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+        <div class="question-block">
+            <span class="question-text">5. Port Security e Tabelas ARP limpas (se ataque for interno/L2)?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+
+        <h2>FASE 4: RECUPERAÇÃO E TESTES</h2>
+        <div class="question-block">
+            <span class="question-text">1. Restauração gradual dos serviços e remoção de Blackholing?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+        <div class="question-block">
+            <span class="question-text">2. Testes de funcionalidade e performance realizados com sucesso?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+        <div class="question-block">
+            <span class="question-text">3. Monitoramento de estabilidade ativo por período pós-ataque?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+        <div class="question-block">
+            <span class="question-text">4. Integridade dos dados e sistemas validada?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+
+        <h2>FASE 5: PÓS-INCIDENTE</h2>
+        <div class="question-block">
+            <span class="question-text">1. Incidente documentado com logs e evidências coletadas?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+        <div class="question-block">
+            <span class="question-text">2. Análise da Causa Raiz concluída? (Vulnerabilidades corrigidas?)</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+        <div class="question-block">
+            <span class="question-text">3. Lições Aprendidas registradas e Playbooks/Procedimentos atualizados?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+        <div class="question-block">
+            <span class="question-text">4. Treinamento de equipe agendado com base nas novas melhorias?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+    </form>
+
+    <div class="actions">
+        <button class="btn btn-clear" onclick="document.getElementById('checklistForm').reset()">Limpar Tudo</button>
+        <button class="btn btn-print" onclick="window.print()">Imprimir Checklist Final</button>
+    </div>
+</div>
+
+<footer>
+    Checklist Técnico DDoS - Baseado nas Melhores Práticas de Segurança da Informação [2026]
+</footer>
+
+</body>
+</html>
