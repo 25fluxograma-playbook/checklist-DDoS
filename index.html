@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checklist Completo - Resposta a Incidentes DDoS</title>
+    <title>Checklist TRATAMENTO DE INCIDENTE DE SEGURANÇA</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Roboto', sans-serif; background-color: #e2e4e3; color: #060b41; line-height: 1.6; padding: 20px; display: flex; flex-direction: column; align-items: center; }
@@ -19,183 +19,318 @@
         .option input { margin-right: 8px; width: 16px; height: 16px; }
         .actions { margin-top: 40px; display: flex; gap: 15px; justify-content: center; }
         .btn { padding: 12px 25px; font-weight: 700; text-transform: uppercase; border: none; border-radius: 4px; cursor: pointer; }
-        .btn-print { background-color: #666; color: white; }
-        .btn-clear { background-color: #7f8c8d; color: white; }
-        footer { margin-top: 40px; font-size: 12px; color: #7f8c8d; text-align: center; }
+        .btn-print { background-color: #555550; color: white; }
+        .btn-clear { background-color: #8CAFB5; color: white; }
+        footer { margin-top: 40px; font-size: 12px; color: #8CAFB5; text-align: center; }
         @media print { .actions, .btn-clear { display: none; } body { background: white; } .container { box-shadow: none; border: 1px solid #eee; } }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>Checklist - Plano de Resposta DDoS</h1>
+    <h1>Checklist - TRATAMENTO DE INCIDENTE DE SEGURANÇA</h1>
     
     <div class="intro">
-        Siga  as etapas baseadas no fluxograma de decisão da seção 5 do Playbook . Este guia integra as ações técnicas de mitigação para cada fase do incidente.
+        Essas etapas são baseadas no NIST em resposta a ataques DoS/DDoS. Este checklist integra as ações técnicas de mitigação para cada fase do incidente seguindo as melhores práticas do framework NIST.
     </div>
 
     <form id="checklistForm">
         
-        <h2>FASE 1: DETECÇÃO E ALERTA</h2>
+        <h2>PREPARAÇÃO</h2>
         <div class="question-block">
-            <span class="question-text">1. Monitoramento ativo identificou anomalias de tráfego?</span>
+            <span class="question-text"> Definição de Papéis para ativar serviços de mitigação. </span>
             <div class="options-container">
                 <label class="option"><input type="checkbox"> SIM</label>
                 <label class="option"><input type="checkbox"> NÃO</label>
             </div>
         </div>
         <div class="question-block">
-            <span class="question-text">2. Houve detecção de picos de Gbps ou PPS acima do normal?</span>
+            <span class="question-text"> Inventário de Ativos Críticos e Dependências. </span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+         <div class="question-block">
+            <span class="question-text"> Plano de resposta a incidentes específico para DoS/DDoS definido?</span>
             <div class="options-container">
                 <label class="option"><input type="checkbox"> SIM</label>
                 <label class="option"><input type="checkbox"> NÃO</label>
             </div>
         </div>
         <div class="question-block">
-            <span class="question-text">3. Análise de padrões: O ataque foi classificado? (Volumétrico, L7, Protocolo)</span>
+            <span class="question-text"> Monitoramento de tráfego e alertas em tempo real configurados?</span>
             <div class="options-container">
                 <label class="option"><input type="checkbox"> SIM</label>
                 <label class="option"><input type="checkbox"> NÃO</label>
             </div>
         </div>
         <div class="question-block">
-            <span class="question-text">4. Ativação do protocolo de resposta foi confirmada?</span>
-            <div class="options-container">
-                <label class="option"><input type="checkbox"> SIM</label>
-                <label class="option"><input type="checkbox"> NÃO</label>
-            </div>
-        </div>
-
-        <h2>FASE 2: CONTENÇÃO IMEDIATA</h2>
-        <h3>Medidas de Borda e Gestão</h3>
-        <div class="question-block">
-            <span class="question-text">1. Limitação de Taxa (Rate Limiting) foi aplicada em ICMP/UDP?</span>
+            <span class="question-text"> Redundância e balanceamento de carga implementados? </span>
             <div class="options-container">
                 <label class="option"><input type="checkbox"> SIM</label>
                 <label class="option"><input type="checkbox"> NÃO</label>
             </div>
         </div>
         <div class="question-block">
-            <span class="question-text">2. Filtragem Geográfica (Geo-Blocking) ativada para regiões não atendidas?</span>
+            <span class="question-text"> Equipe treinada em procedimentos de resposta?</span>
             <div class="options-container">
                 <label class="option"><input type="checkbox"> SIM</label>
                 <label class="option"><input type="checkbox"> NÃO</label>
             </div>
         </div>
         <div class="question-block">
-            <span class="question-text">3. WAF ativado com desafios CAPTCHA ou regras de inspeção profunda?</span>
+            <span class="question-text"> Testes de simulação de ataques realizados?</span>
             <div class="options-container">
                 <label class="option"><input type="checkbox"> SIM</label>
                 <label class="option"><input type="checkbox"> NÃO</label>
             </div>
         </div>
         <div class="question-block">
-            <span class="question-text">4. Tráfego redirecionado para Scrubbing Center (se volumétrico)?</span>
+            <span class="question-text"> Baseline de Tráfego e Performance está configurada e documentada?</span>
             <div class="options-container">
                 <label class="option"><input type="checkbox"> SIM</label>
                 <label class="option"><input type="checkbox"> NÃO</label>
             </div>
         </div>
         <div class="question-block">
-            <span class="question-text">5. Isolamento de segmentos/VLANs realizado para proteger a LAN?</span>
-            <div class="options-container">
-                <label class="option"><input type="checkbox"> SIM</label>
-                <label class="option"><input type="checkbox"> NÃO</label>
-            </div>
-        </div>
-
-        <h2>FASE 3: IDENTIFICAÇÃO E ERRADICAÇÃO</h2>
-        <h3>Ações de Protocolo e Estado</h3>
-        <div class="question-block">
-            <span class="question-text">1. Vetor identificado: Houve mitigação de SYN Flood com SYN Cookies?</span>
+            <span class="question-text">Acordos com ISP/Cloud Mitigação (SLA) estão ativos e testados semestralmente?</span>
             <div class="options-container">
                 <label class="option"><input type="checkbox"> SIM</label>
                 <label class="option"><input type="checkbox"> NÃO</label>
             </div>
         </div>
         <div class="question-block">
-            <span class="question-text">2. Bloqueio de IPs/ASNs maliciosos nos roteadores de borda/Upstream?</span>
+            <span class="question-text"> WAF/Anti-DDoS On-prem/Cloud está instalado e configurado em modo de observação?</span>
             <div class="options-container">
                 <label class="option"><input type="checkbox"> SIM</label>
                 <label class="option"><input type="checkbox"> NÃO</label>
             </div>
         </div>
         <div class="question-block">
-            <span class="question-text">3. Filtros BCP38 implementados para descartar pacotes spoofed?</span>
+            <span class="question-text"> Plano de Comunicação e Escalão Definido foi distribuído à equipe de resposta?</span>
             <div class="options-container">
                 <label class="option"><input type="checkbox"> SIM</label>
                 <label class="option"><input type="checkbox"> NÃO</label>
             </div>
         </div>
         <div class="question-block">
-            <span class="question-text">4. TCP Keep-Alive e Timeouts ajustados para combater conexões lentas?</span>
-            <div class="options-container">
-                <label class="option"><input type="checkbox"> SIM</label>
-                <label class="option"><input type="checkbox"> NÃO</label>
-            </div>
-        </div>
-        <div class="question-block">
-            <span class="question-text">5. Port Security e Tabelas ARP limpas (se ataque for interno/L2)?</span>
+            <span class="question-text">Playbooks e Simulações foram testados no último trimestre?</span>
             <div class="options-container">
                 <label class="option"><input type="checkbox"> SIM</label>
                 <label class="option"><input type="checkbox"> NÃO</label>
             </div>
         </div>
 
-        <h2>FASE 4: RECUPERAÇÃO E TESTES</h2>
-        <div class="question-block">
-            <span class="question-text">1. Restauração gradual dos serviços e remoção de Blackholing?</span>
+        <h2>DETECÇÃO E ANÁLISE</h2>
+         <div class="question-block">
+            <span class="question-text"> Aumento súbito de tráfego identificado?</span>
             <div class="options-container">
                 <label class="option"><input type="checkbox"> SIM</label>
                 <label class="option"><input type="checkbox"> NÃO</label>
             </div>
         </div>
         <div class="question-block">
-            <span class="question-text">2. Testes de funcionalidade e performance realizados com sucesso?</span>
+            <span class="question-text"> Alerta de Thresholds/Anomalia ou ISP Notifica foi recebido e verificado?</span>
             <div class="options-container">
                 <label class="option"><input type="checkbox"> SIM</label>
                 <label class="option"><input type="checkbox"> NÃO</label>
             </div>
         </div>
         <div class="question-block">
-            <span class="question-text">3. Monitoramento de estabilidade ativo por período pós-ataque?</span>
+            <span class="question-text"> Incidente validado como ataque real (não falso positivo)?</span>
             <div class="options-container">
                 <label class="option"><input type="checkbox"> SIM</label>
                 <label class="option"><input type="checkbox"> NÃO</label>
             </div>
         </div>
         <div class="question-block">
-            <span class="question-text">4. Integridade dos dados e sistemas validada?</span>
+            <span class="question-text">Classificação do ataque realizada: Volumétrico, Protocolo, Aplicação ou Híbrido?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+        <div class="question-block">
+            <span class="question-text">Escopo, Impacto e Vetor de Ataque foram analisados e documentados?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+        <div class="question-block">
+            <span class="question-text"> Equipe de Resposta foi acionada e Comunicação Inicial realizada?</span>
             <div class="options-container">
                 <label class="option"><input type="checkbox"> SIM</label>
                 <label class="option"><input type="checkbox"> NÃO</label>
             </div>
         </div>
 
-        <h2>FASE 5: PÓS-INCIDENTE</h2>
+        <h2>CONTENÇÃO</h2>
+        <h3>Medidas de Mitigação Imediata</h3>
         <div class="question-block">
-            <span class="question-text">1. Incidente documentado com logs e evidências coletadas?</span>
+            <span class="question-text">Redirecionamento BGP/DNS para Scrubbing Center ativado?</span>
             <div class="options-container">
                 <label class="option"><input type="checkbox"> SIM</label>
                 <label class="option"><input type="checkbox"> NÃO</label>
             </div>
         </div>
         <div class="question-block">
-            <span class="question-text">2. Análise da Causa Raiz concluída? (Vulnerabilidades corrigidas?)</span>
+            <span class="question-text">Rate Limiting/CAPTCHA/Desafios aplicados nos serviços afetados?</span>
             <div class="options-container">
                 <label class="option"><input type="checkbox"> SIM</label>
                 <label class="option"><input type="checkbox"> NÃO</label>
             </div>
         </div>
         <div class="question-block">
-            <span class="question-text">3. Lições Aprendidas registradas e Playbooks/Procedimentos atualizados?</span>
+            <span class="question-text"> Serviço de Mitigação do ISP/Cloud Provider foi acionado conforme SLA?</span>
             <div class="options-container">
                 <label class="option"><input type="checkbox"> SIM</label>
                 <label class="option"><input type="checkbox"> NÃO</label>
             </div>
         </div>
         <div class="question-block">
-            <span class="question-text">4. Treinamento de equipe agendado com base nas novas melhorias?</span>
+            <span class="question-text">Bloqueio de Geo-IP, IPs Ofensores ou ASNs Maliciosos implementado?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+        <div class="question-block">
+            <span class="question-text"> Ataque está controlado? (Latência normalizada, disponibilidade >95%)</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+        <div class="question-block">
+            <span class="question-text"> Sistemas afetados isolados?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+        <div class="question-block">
+            <span class="question-text"> Conexões Persistentes/Sessões Zombies foram eliminadas?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+
+        <h2>ERRADICAÇÃO</h2>
+        <h3>Ações de Remoção Completa</h3>
+        <div class="question-block">
+            <span class="question-text"> Vetores Remanescentes foram identificados e documentados?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+        <div class="question-block">
+            <span class="question-text">Vulnerabilidades exploradas foram corrigidas (patches/configurações)?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+        <div class="question-block">
+            <span class="question-text"> Conexões Persistentes remanescentes foram eliminadas?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+        <div class="question-block">
+            <span class="question-text"> Bloqueio de Vetores de Amplificação (NTP, DNS open resolvers) implementado?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+        <div class="question-block">
+            <span class="question-text">Artefatos/Scripts Maliciosos foram removidos dos sistemas?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+        <div class="question-block">
+            <span class="question-text">Regras de Firewall/WAF aplicadas foram revisadas e otimizadas?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+
+        <h2>RECUPERAÇÃO</h2>
+        <div class="question-block">
+            <span class="question-text"> Restauração Gradual de Serviços (remoção do Scrubbing) realizada com sucesso?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+        <div class="question-block">
+            <span class="question-text"> Verificação de Integridade de Dados e Serviços concluída?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+        <div class="question-block">
+            <span class="question-text"> Monitoramento Estendido 24/7 por Recaída está ativo?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+        <div class="question-block">
+            <span class="question-text"> Regras Temporárias Restritivas (Pós-Mitigação) foram removidas?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+        <div class="question-block">
+            <span class="question-text"> Comunicação Final aos Stakeholders foi enviada?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+
+        <h2>PÓS-INCIDENTE</h2>
+        <div class="question-block">
+            <span class="question-text">Reunião de Lições Aprendidas realizada dentro de 72 horas?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+        <div class="question-block">
+            <span class="question-text">Cronologia e ações documentadas?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+        <div class="question-block">
+            <span class="question-text">Playbooks, Baseline e Controles foram atualizados com as lições aprendidas?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+        <div class="question-block">
+            <span class="question-text"> Retenção de Provas Forenses para Ação Legal/ISP foi realizada?</span>
+            <div class="options-container">
+                <label class="option"><input type="checkbox"> SIM</label>
+                <label class="option"><input type="checkbox"> NÃO</label>
+            </div>
+        </div>
+        <div class="question-block">
+            <span class="question-text"> SLA com ISP e Estratégias de Mitigação foram revisados e ajustados?</span>
             <div class="options-container">
                 <label class="option"><input type="checkbox"> SIM</label>
                 <label class="option"><input type="checkbox"> NÃO</label>
@@ -205,12 +340,12 @@
 
     <div class="actions">
         <button class="btn btn-clear" onclick="document.getElementById('checklistForm').reset()">Limpar Tudo</button>
-        <button class="btn btn-print" onclick="window.print()">Imprimir Checklist Final</button>
+        <button class="btn btn-print" onclick="window.print()">Imprimir Checklist </button>
     </div>
 </div>
 
 <footer>
-    Checklist Técnico DDoS - Baseado nas Melhores Práticas de Segurança da Informação [2026]
+    Baseado no Framework NIST de Resposta a Incidentes [2026]
 </footer>
 
 </body>
